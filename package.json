@@ -1,0 +1,29 @@
+{
+  "name": "rogue-map-gen",
+  "version": "1.0.0",
+  "description": "A rogue map generator written in AngularJS",
+  "main": "web-server.js",
+  "scripts": {
+    "test": "node server/web-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BagelTheKid/rogue-map-gen.git"
+  },
+  "keywords": [
+    "rogue",
+    "procedural-generation",
+    "map-generation"
+  ],
+  "author": "Nicolas Polhamus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BagelTheKid/rogue-map-gen/issues"
+  },
+  "homepage": "https://github.com/BagelTheKid/rogue-map-gen#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "express": "^4.14.0",
+    "jquery": "^2.2.0"
+  }
+}

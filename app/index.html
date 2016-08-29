@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/angular/angular.js"></script>
+    <script src="/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.module.js"></script>
+    <script src="app.map-generator.service.js"></script>
+    <script src="app.map.controller.js"></script>
+  </head>
+
+  <body ng-app="map-gen">
+    <div class="container-fluid" ng-controller="mapController as mapControl">
+      <div class="card">
+        <div class="card-header">
+          <button class="btn btn-primary" type="button" ng-click="mapControl.generate()">Generate map!</button>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title">Map Width: {{mapControl.map.y}} Map Height: {{mapControl.map.x}}</h4>
+          <!--<p class="card-text">{{mapContro.map.toString()}}</p>-->
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
