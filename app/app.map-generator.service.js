@@ -55,7 +55,7 @@
     map.map = seeder(map.x, map.y);
     console.log('Map after seeding:');
     console.log(map);
-    map.map = populate(map);
+    populate(map);
     return map;
   }
 
@@ -91,16 +91,11 @@
   }
 
   function populate(map) {
-    var populatedMap = [];
-    var row;
     for (var r = 0, c = 0; r < map.x; r++) {
-      row = [];
       for (c = 0; c < map.y; c++) {
-        row.push(placeWall(r, c, map));
+        map.map[r][c] = (placeWall(r, c, map));
       }
-      populatedMap.push(row);
     }
-    return populatedMap;
   }
 
   function placeWall(x, y, map) {
@@ -108,12 +103,12 @@
     //console.log('Surrounding Walls: ' + surroundingWalls);
     //console.log('Cell at index ['+x+']['+y+'] : '+map.map[x][y]);
     if (map.map[x][y] === 1) {
-      if (surroundingWalls >= 4) {
+      if (surroundingWalls >= 3) {
         return 1;
       }
       return 0;
     } else {
-      if (surroundingWalls >= 5) {
+      if (surroundingWalls >= 4) {
         return 1;
       }
     }
@@ -132,7 +127,7 @@
     for (iX = beforeX; iX < afterX; iX++) {
       for (iY = beforeY; iY < afterY; iY++) {
         console.log('Checking index at [' + iX + '][' + iY + ']');
-        if (iX !== row && iY !== column) {
+        if (!(iX == row && iY == column)) {
           if (isWall(map, iX, iY)) {
             walls++;
           }
@@ -144,6 +139,9 @@
   }
 
   function isWall(map, x, y) {
+    if(x > -1 && y > -1) {
+      console.log(map.map[x][y]);
+    }
     if (outOfBounds(map, x, y)) {
       return true;
     } else if (map.map[x][y] === 1) {
@@ -155,7 +153,7 @@
   }
 
   function outOfBounds(map, x, y) {
-    if (x < 0 || y < 0 || x > map.x - 1 || y > map.y - 1) {
+    if (x < 0 || y < 0 || x > map.x - 2 || y > map.y - 2) {
       return true;
     }
     return false;
