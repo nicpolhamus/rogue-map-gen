@@ -96,9 +96,11 @@
     for (var r = 0, c = 0; r < map.x; r++) {
       row = [];
       for (c = 0; c < map.y; c++) {
-        map.map[r][c] = placeWall(r, c, map);
+        row.push(placeWall(r, c, map));
       }
+      populatedMap.push(row);
     }
+    return populatedMap;
   }
 
   function placeWall(x, y, map) {
@@ -119,15 +121,18 @@
   }
 
   function getSurroundingWalls(map, row, column) {
-    var beforeX = (row === 0) ? 0 : row - 1;
-    var beforeY = (column === 0) ? 0 : column - 1;
-    var afterX = (row === map.x) ? row : row + 1;
-    var afterY = (column === map.y) ? column : column + 1;
+    var beforeX = row - 1;
+    var beforeY = column - 1;
+    var afterX = row + 1;
+    var afterY = column + 1;
+    var iX = beforeX;
+    var iY = beforeY;
     var walls = 0;
-    for (var iX = beforeX, iY = beforeY; iX < afterX; iX++) {
+
+    for (iX = beforeX; iX < afterX; iX++) {
       for (iY = beforeY; iY < afterY; iY++) {
         console.log('Checking index at [' + iX + '][' + iY + ']');
-        if (iX !== row || iY !== column) {
+        if (iX !== row && iY !== column) {
           if (isWall(map, iX, iY)) {
             walls++;
           }
@@ -139,7 +144,6 @@
   }
 
   function isWall(map, x, y) {
-    console.log(map.map[x][y]);
     if (outOfBounds(map, x, y)) {
       return true;
     } else if (map.map[x][y] === 1) {
@@ -151,7 +155,7 @@
   }
 
   function outOfBounds(map, x, y) {
-    if (x > map.x - 1 || y > map.y - 1) {
+    if (x < 0 || y < 0 || x > map.x - 1 || y > map.y - 1) {
       return true;
     }
     return false;
