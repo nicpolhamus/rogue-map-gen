@@ -12,8 +12,10 @@
       vm.generate = generate;
 
       function generate() {
-        map = mapGenerator.generate(map);
+        map.seed();
+        map.populate();
         vm.map = map;
+        vm.mapString = map.toString();
         console.log(map);
       }
     }
