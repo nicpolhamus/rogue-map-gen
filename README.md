@@ -12,7 +12,7 @@ A rogue map generator written in AngularJS
 
 ---
 
-## Current Task:
+## Tasks:
 
 - [x] Need to get map population corrected
 - [ ] Adjust page to allow for user to put in custom height & width for map
