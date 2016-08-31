@@ -8,11 +8,15 @@
     mapControl.$inject = ['mapGenerator'];
     function mapControl(mapGenerator) {
       var vm = this;
-      var map = mapGenerator.createMap(10,10);
+      var map;
       vm.generate = generate;
+      vm.x;
+      vm.y;
+      vm.perc;
 
       function generate() {
-        map.seed();
+        map =  mapGenerator.createMap(vm.y,vm.x)
+        map.seed(vm.perc);
         map.populate();
         vm.map = map;
         vm.mapString = map.toString();
