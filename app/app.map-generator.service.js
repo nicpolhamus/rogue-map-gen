@@ -103,7 +103,7 @@
     }
   }
 
-  function seeder() {
+  function seeder(percent) {
     var map = [];
     var row;
     for (var r = 0, c = 0; r < this.x; r++) {
@@ -121,7 +121,7 @@
           if (r === this.x / 2) {
             row.push(0);
           } else {
-            row.push(randomWall());
+            row.push(randomWall(percent));
           }
         }
       }
@@ -131,8 +131,8 @@
 
     ////////////////
 
-    function randomWall() {
-      return (Math.floor(Math.random() * (101 - 1) + 1) <= 40) ? 1 : 0;
+    function randomWall(percent) {
+      return (Math.floor(Math.random() * (101 - 1) + 1) <= percent) ? 1 : 0;
     }
   }
 
