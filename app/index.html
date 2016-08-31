@@ -6,7 +6,7 @@
     <script src="/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/angular/angular.js"></script>
     <script src="/jquery/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="app.layout.css" />
     <script src="app.module.js"></script>
     <script src="app.map-generator.service.js"></script>
     <script src="app.map.controller.js"></script>
@@ -17,11 +17,38 @@
     <div class="container-fluid" ng-controller="mapController as mapControl">
       <div class="card">
         <div class="card-header">
-          <button class="btn btn-primary" type="button" ng-click="mapControl.generate()">Generate map!</button>
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="input-group">
+                <span class="input-group-addon" id="map-width">Width:</span>
+                <input type="text" class="form-control" ng-model="mapControl.x"
+                  placeholder="Width of Map" aria-describedby="map-width">
+              </div>  
+            </div>
+            <div class="col-sm-3 offset-sm-0">
+              <div class="input-group">
+                <span class="input-group-addon" id="map-height">Height:</span>
+                <input type="text" class="form-control" ng-model="mapControl.y" 
+                  placeholder="Height of Map" aria-describedby="map-width">
+              </div>  
+            </div>
+            <div class="col-sm-3 offset-sm-0">
+              <div class="input-group">
+                <span class="input-group-addon" id="map-height">Wall %:</span>
+                <input type="text" class="form-control" ng-model="mapControl.perc" 
+                  placeholder="Wall chance" aria-describedby="map-width">
+              </div>  
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-2">
+              <button class="btn btn-primary" type="button" ng-click="mapControl.generate()">Generate map!</button>  
+            </div>  
+          </div>
         </div>
-        <div class="card-block">
-          <h4 class="card-title">Map Width: {{mapControl.map.y}} Map Height: {{mapControl.map.x}}</h4>
-          <pre class="card-text">{{mapControl.mapString}}</pre>
+        <div class="card-block text-xs-center">
+          <pre class="card-text map">{{mapControl.mapString}}</pre>
         </div>
       </div>
     </div>
