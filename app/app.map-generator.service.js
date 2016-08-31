@@ -13,15 +13,26 @@
     return service;
   }
 
-  function Map(x, y) {
-    this.x = x;
-    this.y = y;
-    this.map = [];
+  function Map() {
+    this.x = 10;
+    this.y = 10;
+    this.map = [
+      [1,1,1,1,1,1,1,1,1,1],
+      [1,1,0,0,0,0,1,1,1,1],
+      [1,0,0,0,0,0,0,1,1,1],
+      [1,0,0,0,0,0,0,1,1,1],
+      [1,0,0,0,0,0,0,0,0,1],
+      [1,1,0,0,0,0,0,0,0,1],
+      [1,1,1,0,0,0,0,0,1,1],
+      [1,1,1,0,0,0,1,1,1,1],
+      [1,0,0,0,0,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1,1,1]
+    ];
   }
 
   Map.prototype = {
     populate: populate,
-    seed: seeder,
+    //seed: seeder,
     toString: toString
   };
 
@@ -35,13 +46,45 @@
         this.map[r][c] = (placeWall(r, c, this));
       }
     }
+  }
 
-    //////////////
+  function seeder() {
+    var map = [];
+    var row;
+    for (var r = 0, c = 0; r < this.x; r++) {
+      row = [];
+      for (c = 0; c < this.y; c++) {
+        if (r === 0) {
+          row.push(1);
+        } else if (c === 0) {
+          row.push(1);
+        } else if (r === this.x - 1) {
+          row.push(1);
+        } else if (c === this.y - 1) {
+          row.push(1);
+        } else {
+          if (r === this.x / 2) {
+            row.push(0);
+          } else {
+            row.push(randomWall());
+          }
+        }
+      }
+      map.push(row);
+    }
+    this.map = map;
 
-    function placeWall(x, y, map) {
+    ////////////////
+
+    function randomWall() {
+      return (Math.floor(Math.random() * (101 - 1) + 1) <= 40) ? 1 : 0;
+    }
+  }
+
+  function placeWall(x, y, map) {
       var surroundingWalls = getSurroundingWalls(map, x, y);
-      //console.log('Surrounding Walls: ' + surroundingWalls);
-      //console.log('Cell at index ['+x+']['+y+'] : '+map.map[x][y]);
+      console.log('Surrounding Walls: ' + surroundingWalls);
+      console.log('Cell at index ['+x+']['+y+'] : '+map.map[x][y]);
       if (map.map[x][y] === 1) {
         if (surroundingWalls >= 3) {
           return 1;
@@ -104,40 +147,6 @@
         }
       }
     }
-  }
-
-  function seeder() {
-    var map = [];
-    var row;
-    for (var r = 0, c = 0; r < this.x; r++) {
-      row = [];
-      for (c = 0; c < this.y; c++) {
-        if (r === 0) {
-          row.push(1);
-        } else if (c === 0) {
-          row.push(1);
-        } else if (r === this.x - 1) {
-          row.push(1);
-        } else if (c === this.y - 1) {
-          row.push(1);
-        } else {
-          if (r === this.x / 2) {
-            row.push(0);
-          } else {
-            row.push(randomWall());
-          }
-        }
-      }
-      map.push(row);
-    }
-    this.map = map;
-
-    ////////////////
-
-    function randomWall() {
-      return (Math.floor(Math.random() * (101 - 1) + 1) <= 40) ? 1 : 0;
-    }
-  }
 
   function toString() {
     var chars = ['.', '#', '+'];

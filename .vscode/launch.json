@@ -1,0 +1,15 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "Attach to url with files served from ./out",
+            "type": "chrome",
+            "request": "attach",
+            "port": 3000,
+            "webRoot": "${workspaceRoot}/server",
+            "sourceMaps": true,
+            "runtimeExecutable": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+            "diagnosticLogging": true
+        }
+    ]
+}

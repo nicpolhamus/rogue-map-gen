@@ -4,7 +4,7 @@
   "description": "A rogue map generator written in AngularJS",
   "main": "web-server.js",
   "scripts": {
-    "test": "node server/web-server.js"
+    "start": "node server/web-server.js"
   },
   "repository": {
     "type": "git",

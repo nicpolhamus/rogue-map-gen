@@ -12,7 +12,7 @@
       vm.generate = generate;
 
       function generate() {
-        map.seed();
+        // map.seed();
         map.populate();
         vm.map = map;
         vm.mapString = map.toString();
