@@ -17,4 +17,4 @@ A rogue map generator written in AngularJS
 - [x] Need to get map population corrected
 - [x] Adjust page to allow for user to put in custom height & width for map
 - [x] Change display format for Map, for a cleaner look
-- [ ] create a Jekyll page, then add this app to the Jekyl page
+- [x] create a Jekyll page, then add this app to the Jekyl page
