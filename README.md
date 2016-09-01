@@ -1,6 +1,9 @@
 # rogue-map-gen
 A rogue map generator written in AngularJS
 
+*This project was heavily influenced by this [C# blogpost](http://www.csharpprogramming.tips/2013/07/Rouge-like-dungeon-generation.html)*
+*Thank you to @Adam Rakaska for your blogpost about Rogue-like Map Generation*
+
 ---
 
 ## Frameworks used:
